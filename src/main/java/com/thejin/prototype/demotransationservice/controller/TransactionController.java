@@ -22,7 +22,13 @@ public class TransactionController {
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             TransactionResponse errorResponse = new TransactionResponse("FAILED", null, "Transaction failed: " + e.getMessage());
-            return ResponseEntity.badRequest().body(errorResponse);
+            return ResponseEntity.badRequest().body (errorResponse);
         }
+    }
+
+
+    @PostMapping("/")
+    public void sampleProcess(){
+        return;
     }
 }

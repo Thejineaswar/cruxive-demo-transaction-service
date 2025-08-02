@@ -31,8 +31,13 @@ public class TransactionService {
                 request.getAmount(),
                 coreBankResponse.getTransactionReference()
             );
-            
-            smsService.sendSms(request.getPayerMobile(), smsMessage);
+
+            SmsDto smsDto = new SmsDto();
+            smsDto.setAmount(request.getAmount());
+            smsDto.setReference(coreBankResponse.getTransactionReference());
+            smsDto.setMobile(request.getPayerMobile());
+
+            smsService.sendSms(smsDto);
             
             return new TransactionResponse(
                 "SUCCESS",

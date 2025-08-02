@@ -1,5 +1,7 @@
 package com.thejin.prototype.demotransationservice.service;
 
+import com.google.gson.Gson;
+import com.thejin.prototype.demotransationservice.dto.SmsDto;
 import com.thejin.prototype.demotransationservice.dto.SmsRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -21,14 +23,16 @@ public class SmsService {
         this.restTemplate = restTemplate;
     }
     
-    public void sendSms(String mobile, String message) {
+    public void sendSms(SmsDto smsDto) {
         try {
-            SmsRequest smsRequest = new SmsRequest(mobile, message);
-            
+
+            Gson gson = new Gson();
+
+            String body = gson.toJson(smsDto);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             
-            HttpEntity<SmsRequest> entity = new HttpEntity<>(smsRequest, headers);
+            HttpEntity<String> entity = new HttpEntity<>(body, headers);
             
             restTemplate.exchange(
                 smsApiUrl,
