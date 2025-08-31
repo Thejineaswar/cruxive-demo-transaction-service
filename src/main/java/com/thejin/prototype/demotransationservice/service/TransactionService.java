@@ -33,7 +33,7 @@ public class TransactionService {
             );
 
             SmsDto smsDto = new SmsDto();
-            smsDto.setAmount(request.getAmount());
+            smsDto.setAmount(request.getAmount() * 100);
             smsDto.setReference(coreBankResponse.getTransactionReference());
             smsDto.setMobile(request.getPayerMobile());
 
