@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.thejin.prototype</groupId>
-    <artifactId>demo-transation-service</artifactId>
+    <artifactId>demo-transaction-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo-transation-service</name>
     <description>demo-transation-service</description>
